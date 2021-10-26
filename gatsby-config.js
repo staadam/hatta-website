@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
+    title: 'Hatta',
+    description:
+      'While artists work from real to the abstract, architects must work from the abstract to the real.',
+    url: 'https://www.hattahatta.com', // No trailing slash allowed!
+    image: '/logo.png', // Path to the image placed in the 'static' folder, in the project's root directory.
   },
   plugins: [
     {

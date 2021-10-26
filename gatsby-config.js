@@ -18,7 +18,7 @@ module.exports = {
           google: [
             {
               family: 'Montserrat',
-              variants: ['400', '600', '700'],
+              variants: ['400', '600', '700', '900'],
             },
           ],
         },
@@ -26,5 +26,15 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-layout`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images/`,
+      },
+    },
   ],
 };

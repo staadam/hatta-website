@@ -12,6 +12,7 @@ export const theme = {
     lightPurple: '#ECEFF7',
   },
   fontSize: {
+    banner: '92px',
     xxl: '34px',
     xl: '24px',
     l: '17px',

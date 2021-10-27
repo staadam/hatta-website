@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   display: flex;

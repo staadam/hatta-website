@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { ReactNode } from 'react';
 
 interface ITitleProps {
@@ -10,7 +10,7 @@ interface ITitleProps {
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: ${({ isBanner }) => (isBanner ? 'flex-end' : 'flex-start')};
   text-align: ${({ isBanner }) => (isBanner ? 'right' : 'left')};
 
   h1 {
@@ -22,7 +22,7 @@ const TitleWrapper = styled.div`
 
   h2 {
     max-width: 500px;
-    font-size: ${({ theme: { fontSize } }) => fontSize.xl};
+    font-size: ${({ theme: { fontSize } }) => fontSize.xxl};
     margin-bottom: 20px;
   }
 
@@ -32,6 +32,6 @@ const TitleWrapper = styled.div`
   }
 `;
 
-export const Title = ({ children, isBanner }: ITitleProps) => (
-  <TitleWrapper isBanner>{children}</TitleWrapper>
+export const Title = ({ children, isBanner = false }: ITitleProps) => (
+  <TitleWrapper isBanner={isBanner}>{children}</TitleWrapper>
 );

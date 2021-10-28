@@ -6,6 +6,7 @@ type headingElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 interface IAnimatedTitleProps {
   children: string;
   headingElement?: headingElementType;
+  extraDelay?: number;
 }
 
 const fadeIn = keyframes`
@@ -23,9 +24,14 @@ const fadeIn = keyframes`
 const AnimatedSpan = styled.span`
   display: inline-block;
   animation: ${fadeIn} 0.05s ${({ delay }) => `${delay}s`} ease both;
+  white-space: pre-wrap;
 `;
 
-export const AnimatedTitle = ({ children, headingElement = 'h1' }: IAnimatedTitleProps) => {
+export const AnimatedTitle = ({
+  children,
+  headingElement = 'h1',
+  extraDelay = 0,
+}: IAnimatedTitleProps) => {
   const CustomTag = headingElement as keyof JSX.IntrinsicElements;
 
   const letters = children.split('');
@@ -33,7 +39,7 @@ export const AnimatedTitle = ({ children, headingElement = 'h1' }: IAnimatedTitl
   return (
     <CustomTag>
       {letters.map((letter, index) => (
-        <AnimatedSpan key={index} delay={index * 0.05}>
+        <AnimatedSpan key={index} delay={extraDelay + index * 0.05}>
           {letter}
         </AnimatedSpan>
       ))}

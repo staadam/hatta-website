@@ -7,6 +7,7 @@ import { Title } from '../components/Title/Title';
 import { AnimatedTitle } from '../components/AnimatedTitle/AnimatedTitle';
 import { AnimatedParagraph, Author } from '../components/AnimatedParagraph/AnimatedParagraph';
 import { StyledImage } from '../components/IndexStyled/Index.styled';
+import SEO from '../components/SEO/SEO';
 
 const Wrapper = styled.section`
   display: grid;
@@ -79,6 +80,7 @@ export const query = graphql`
 const Gallery = ({ data }: IGalleryProps) => {
   return (
     <Wrapper>
+      <SEO title={'Hatta about'} article={false} />
       <div>
         <TitlePosition>
           <Title>

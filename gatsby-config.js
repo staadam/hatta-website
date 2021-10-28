@@ -48,5 +48,11 @@ module.exports = {
         apiToken: process.env.API_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: 'static/logo.png', // This path is relative to the root of the site.
+      },
+    },
   ],
 };

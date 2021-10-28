@@ -1,22 +1,16 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 import { Title } from '../components/Title/Title';
 import { DisplayGallery } from '../components/DisplayGallery/DisplayGallery';
 import { AnimatedTitle } from '../components/AnimatedTitle/AnimatedTitle';
 import { AnimatedParagraph } from '../components/AnimatedParagraph/AnimatedParagraph';
-
-const Wrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  max-width: 1440px;
-  width: 80%;
-  margin: 125px auto 20px;
-`;
+import { ImagesWrapper } from '../components/ImagesWrapper/ImagesWrapper';
+import SEO from '../components/SEO/SEO';
 
 const Gallery = () => {
   return (
-    <Wrapper>
+    <ImagesWrapper>
+      <SEO title={'Hatta gallery'} article={false} />
       <Title>
         <AnimatedTitle headingElement={'h2'}>gallery</AnimatedTitle>
         <AnimatedParagraph>
@@ -24,7 +18,7 @@ const Gallery = () => {
         </AnimatedParagraph>
       </Title>
       <DisplayGallery />
-    </Wrapper>
+    </ImagesWrapper>
   );
 };
 

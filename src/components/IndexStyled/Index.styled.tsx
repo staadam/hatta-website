@@ -43,7 +43,7 @@ export const Banner = styled.div`
   align-items: flex-end;
   padding-right: 30px;
   animation: ${fadeInBanner} 0.5s 0.6s both ease;
-  z-index: -1;
+  z-index: 0;
 `;
 
 export const StyledImage = styled(GatsbyImage)`

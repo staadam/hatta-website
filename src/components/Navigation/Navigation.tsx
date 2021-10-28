@@ -9,6 +9,7 @@ const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   padding: 20px 30px;
+  z-index: 1;
 `;
 
 const StyledLogo = styled(Link)`

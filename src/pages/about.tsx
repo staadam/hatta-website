@@ -4,8 +4,8 @@ import styled, { keyframes } from 'styled-components';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { Title } from '../components/Title/Title';
-import { AnimatedTitle } from '../components/AnimatedTitle/AnimatedTitle';
-import { AnimatedParagraph, Author } from '../components/AnimatedParagraph/AnimatedParagraph';
+import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
+import { AnimatedParagraph, Author } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
 import { StyledImage } from '../components/IndexStyled/Index.styled';
 import SEO from '../components/SEO/SEO';
 

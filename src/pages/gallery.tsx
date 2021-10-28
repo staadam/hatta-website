@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import { Title } from '../components/Title/Title';
 import { DisplayGallery } from '../components/DisplayGallery/DisplayGallery';
-import { AnimatedTitle } from '../components/AnimatedTitle/AnimatedTitle';
-import { AnimatedParagraph } from '../components/AnimatedParagraph/AnimatedParagraph';
-import { ImagesWrapper } from '../components/ImagesWrapper/ImagesWrapper';
+import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
+import { AnimatedParagraph } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
+import { ImagesLayoutWrapper } from '../components/ImagesWrapper/ImagesWrapper';
 import SEO from '../components/SEO/SEO';
 
 const Gallery = () => {
   return (
-    <ImagesWrapper>
+    <ImagesLayoutWrapper>
       <SEO title={'Hatta gallery'} article={false} />
       <Title>
         <AnimatedTitle headingElement={'h2'}>gallery</AnimatedTitle>
@@ -18,7 +18,7 @@ const Gallery = () => {
         </AnimatedParagraph>
       </Title>
       <DisplayGallery />
-    </ImagesWrapper>
+    </ImagesLayoutWrapper>
   );
 };
 

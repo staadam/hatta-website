@@ -1,34 +1,8 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import styled, { keyframes } from 'styled-components';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-
-const Wrapper = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-  gap: 25px;
-  margin-top: 50px;
-`;
-
-const fadeIn = keyframes`
-  0% {
-    transform: translateY(30%);
-    opacity: 0;
-  }
-  
-  70%{
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
-const StyledImage = styled(GatsbyImage)`
-  animation: ${fadeIn} 0.7s ${({ delay }) => `${0.8 + delay}s`} cubic-bezier(0.17, 0.84, 0.95, 1.01) both;
-`;
+import { ImagesWrapper } from '../ImagesWrapper/ImagesWrapper';
+import { animateImage } from '../Animation/AnimatedImage/AnimatedImage';
 
 interface IPhotosArrayItem {
   gatsbyImageData: IGatsbyImageData;
@@ -40,6 +14,7 @@ interface IDisplayGalleryData {
     photos: Array<IPhotosArrayItem>;
   };
 }
+const StyledImage = animateImage(GatsbyImage);
 
 export const DisplayGallery = () => {
   const data: IDisplayGalleryData = useStaticQuery(graphql`
@@ -54,7 +29,7 @@ export const DisplayGallery = () => {
   `);
 
   return (
-    <Wrapper>
+    <ImagesWrapper>
       {data.datoCmsGallery.photos.map((photo, index) => (
         <StyledImage
           alt={photo.alt || 'gallery element'}
@@ -64,6 +39,6 @@ export const DisplayGallery = () => {
           className='styledImage'
         />
       ))}
-    </Wrapper>
+    </ImagesWrapper>
   );
 };

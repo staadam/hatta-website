@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import slugify from 'slugify';
 
 import { Title } from '../components/Title/Title';
 import SEO from '../components/SEO/SEO';
-import { AnimatedTitle } from '../components/AnimatedTitle/AnimatedTitle';
-import { AnimatedParagraph } from '../components/AnimatedParagraph/AnimatedParagraph';
-import { DisplayGallery } from '../components/DisplayGallery/DisplayGallery';
-import { ImagesWrapper } from '../components/ImagesWrapper/ImagesWrapper';
+import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
+import { AnimatedParagraph } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
+import { ImagesLayoutWrapper, ImagesWrapper } from '../components/ImagesWrapper/ImagesWrapper';
+import { StyledArticleLink } from '../components/GalleryStyles/gallery.styled';
+import { animateImage } from '../components/Animation/AnimatedImage/AnimatedImage';
 
 interface IArticleNode {
   title: string;
+  meta: {
+    createdAt: string;
+  };
   featuredImage: {
     gatsbyImageData: IGatsbyImageData;
   };
@@ -30,6 +34,9 @@ export const query = graphql`
     allDatoCmsArticle {
       nodes {
         title
+        meta {
+          createdAt(formatString: "DD.MM.YYYY")
+        }
         featuredImage {
           gatsbyImageData
         }
@@ -37,12 +44,13 @@ export const query = graphql`
     }
   }
 `;
+const AnimatedLink = animateImage(StyledArticleLink);
 
 const IndexPage = ({ data }: IIndexProps) => {
-  console.log(data);
+  const { nodes } = data.allDatoCmsArticle;
 
   return (
-    <ImagesWrapper>
+    <ImagesLayoutWrapper>
       <SEO title={'Hatta articles'} article={false} />
       <Title>
         <AnimatedTitle headingElement={'h2'}>articles</AnimatedTitle>
@@ -50,8 +58,18 @@ const IndexPage = ({ data }: IIndexProps) => {
           While artists work from real to the abstract, architects must work from the abstract to the real.
         </AnimatedParagraph>
       </Title>
-      <DisplayGallery />
-    </ImagesWrapper>
+      <ImagesWrapper>
+        {nodes.map((node, index) => (
+          <AnimatedLink to={slugify(node.title, { lower: true })} key={index} delay={index * 0.1}>
+            <GatsbyImage image={node.featuredImage.gatsbyImageData} alt={node.title} />
+            <p>
+              {node.title}
+              <span>{node.meta.createdAt}</span>
+            </p>
+          </AnimatedLink>
+        ))}
+      </ImagesWrapper>
+    </ImagesLayoutWrapper>
   );
 };
 

@@ -48,4 +48,5 @@ export const Banner = styled.div`
 
 export const StyledImage = styled(GatsbyImage)`
   animation: ${fadeInHero} 0.5s both ease;
+  height: 100vh;
 `;

@@ -12,4 +12,8 @@ export const GlobalStyle = createGlobalStyle`
   html{
     overflow-x: hidden;
   }
+  
+  body{
+    min-height: 100vh;
+  }
 `;

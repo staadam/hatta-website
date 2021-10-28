@@ -1,43 +1,19 @@
 import * as React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { ImagesWrapper } from '../ImagesWrapper/ImagesWrapper';
-import { animateImage } from '../Animation/AnimatedImage/AnimatedImage';
+import { AnimatedImage } from '../Animation/AnimatedImage/AnimatedImage';
+import { ReactNode } from 'react';
 
-interface IPhotosArrayItem {
-  gatsbyImageData: IGatsbyImageData;
-  alt: string | null;
+interface IDisplayGalleryProps {
+  children: Array<ReactNode>;
 }
 
-interface IDisplayGalleryData {
-  datoCmsGallery: {
-    photos: Array<IPhotosArrayItem>;
-  };
-}
-const StyledImage = animateImage(GatsbyImage);
-
-export const DisplayGallery = () => {
-  const data: IDisplayGalleryData = useStaticQuery(graphql`
-    {
-      datoCmsGallery {
-        photos {
-          gatsbyImageData
-          alt
-        }
-      }
-    }
-  `);
-
+export const DisplayGallery = ({ children }: IDisplayGalleryProps) => {
   return (
     <ImagesWrapper>
-      {data.datoCmsGallery.photos.map((photo, index) => (
-        <StyledImage
-          alt={photo.alt || 'gallery element'}
-          image={photo.gatsbyImageData}
-          key={index}
-          delay={index * 0.1}
-          className='styledImage'
-        />
+      {children.map((child, index) => (
+        <AnimatedImage key={index} delay={index * 0.1}>
+          {child}
+        </AnimatedImage>
       ))}
     </ImagesWrapper>
   );

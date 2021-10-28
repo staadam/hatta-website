@@ -16,6 +16,7 @@ export const fadeIn = keyframes`
   }
 `;
 
-export const animateImage = (component) => styled(component)`
-  animation: ${fadeIn} 0.7s ${({ delay = 0 }) => `${0.8 + delay}s`} cubic-bezier(0.17, 0.84, 0.95, 1.01) both;
+export const AnimatedImage = styled.div`
+  animation: ${fadeIn} 0.7s ${({ delay = 0 }) => `${0.8 + delay}s`}
+    cubic-bezier(0.17, 0.84, 0.95, 1.01) both;
 `;

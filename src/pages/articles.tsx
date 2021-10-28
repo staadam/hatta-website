@@ -7,9 +7,9 @@ import { Title } from '../components/Title/Title';
 import SEO from '../components/SEO/SEO';
 import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
 import { AnimatedParagraph } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
-import { ImagesLayoutWrapper, ImagesWrapper } from '../components/ImagesWrapper/ImagesWrapper';
+import { ImagesLayoutWrapper } from '../components/ImagesWrapper/ImagesWrapper';
 import { StyledArticleLink } from '../components/GalleryStyles/gallery.styled';
-import { animateImage } from '../components/Animation/AnimatedImage/AnimatedImage';
+import { DisplayGallery } from '../components/DisplayGallery/DisplayGallery';
 
 interface IArticleNode {
   title: string;
@@ -44,7 +44,6 @@ export const query = graphql`
     }
   }
 `;
-const AnimatedLink = animateImage(StyledArticleLink);
 
 const IndexPage = ({ data }: IIndexProps) => {
   const { nodes } = data.allDatoCmsArticle;
@@ -55,20 +54,25 @@ const IndexPage = ({ data }: IIndexProps) => {
       <Title>
         <AnimatedTitle headingElement={'h2'}>articles</AnimatedTitle>
         <AnimatedParagraph>
-          While artists work from real to the abstract, architects must work from the abstract to the real.
+          While artists work from real to the abstract, architects must work from the abstract to
+          the real.
         </AnimatedParagraph>
       </Title>
-      <ImagesWrapper>
+      <DisplayGallery>
         {nodes.map((node, index) => (
-          <AnimatedLink to={slugify(node.title, { lower: true })} key={index} delay={index * 0.1}>
+          <StyledArticleLink
+            to={slugify(node.title, { lower: true })}
+            key={index}
+            delay={index * 0.1}
+          >
             <GatsbyImage image={node.featuredImage.gatsbyImageData} alt={node.title} />
             <p>
               {node.title}
               <span>{node.meta.createdAt}</span>
             </p>
-          </AnimatedLink>
+          </StyledArticleLink>
         ))}
-      </ImagesWrapper>
+      </DisplayGallery>
     </ImagesLayoutWrapper>
   );
 };

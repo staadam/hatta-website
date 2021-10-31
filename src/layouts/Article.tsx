@@ -4,7 +4,7 @@ import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Title } from '../components/Title/Title';
 import { ArticleWrapper } from '../components/ArticleWrapper/ArticleWrapper';
 import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
-import { AnimatedParagraph } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
+import { AnimatedBlock } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
 import { AnimatedImage } from '../components/Animation/AnimatedImage/AnimatedImage';
 
 interface IDatoCMSHeading {
@@ -71,15 +71,15 @@ const Article = ({ pageContext, data }: IArticleProps) => {
           switch (key) {
             case 'heading':
               return (
-                <AnimatedParagraph key={index} extraDelay={1 + index * 0.1}>
-                  <strong>{tag[key]}</strong>
-                </AnimatedParagraph>
+                <AnimatedBlock key={index} extraDelay={1 + index * 0.1}>
+                  <h2>{tag[key]}</h2>
+                </AnimatedBlock>
               );
             case 'paragraph':
               return (
-                <AnimatedParagraph key={index} extraDelay={1 + index * 0.1}>
-                  {tag[key]}
-                </AnimatedParagraph>
+                <AnimatedBlock key={index} extraDelay={1 + index * 0.1}>
+                  <p>{tag[key]}</p>
+                </AnimatedBlock>
               );
             default:
               return null;

@@ -18,7 +18,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.allDatoCmsArticle.nodes.forEach((node) => {
     const slug = slugify(node.title, { lower: true });
-    console.log(slug);
     createPage({
       path: `articles/${slug}`,
       component,

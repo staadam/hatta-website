@@ -33,7 +33,7 @@ exports.handler = async function (req, res) {
 
   if (!human) {
     return {
-      statusCode: 400,
+      statusCode: 200,
       body: JSON.stringify({ message: "You're a bot!!!" }),
     };
   }
@@ -51,5 +51,6 @@ exports.handler = async function (req, res) {
 
   return {
     statusCode: 200,
+    body: JSON.stringify({ message: 'message send' }),
   };
 };

@@ -19,8 +19,9 @@ const fadeIn = (from: fromType = 'right') => {
 `;
 };
 
-export const AnimatedParagraph = styled.p`
-  animation: ${({ from }) => fadeIn(from)} 0.3s ${({ extraDelay = 0 }) => `${extraDelay + 0.4}s`} ease both;
+export const AnimatedBlock = styled.div`
+  animation: ${({ from }) => fadeIn(from)} 0.3s ${({ extraDelay = 0 }) => `${extraDelay + 0.4}s`}
+    ease both;
   line-height: 1.6;
 `;
 

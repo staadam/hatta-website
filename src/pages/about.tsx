@@ -5,10 +5,7 @@ import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { Title } from '../components/Title/Title';
 import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
-import {
-  AnimatedParagraph,
-  Author,
-} from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
+import { AnimatedBlock, Author } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
 import { StyledImage } from '../components/IndexStyled/Index.styled';
 import SEO from '../components/SEO/SEO';
 
@@ -88,22 +85,26 @@ const Gallery = ({ data }: IGalleryProps) => {
         <TitlePosition>
           <Title>
             <AnimatedTitle headingElement={'h2'}>about</AnimatedTitle>
-            <AnimatedParagraph>
-              While artists work from real to the abstract, architects must work from the abstract
-              to the real.
-            </AnimatedParagraph>
+            <AnimatedBlock>
+              <p>
+                While artists work from real to the abstract, architects must work from the abstract
+                to the real.
+              </p>
+            </AnimatedBlock>
           </Title>
         </TitlePosition>
         <AboutDescription>
-          <AnimatedParagraph from={'left'} extraDelay={0.5}>
-            Architectural design is primarily driven by the holistically creative manipulation of
-            mass, space, volume, texture, light, shadow, materials, program, and Realistic elements
-            such as cost, construction and technology, in order to achieve an end which is
-            aesthetic, functional and often artistic. This distinguishes Architecture from
-            engineering design, which is usually driven primarily by the creative application of
-            mathematical and scientific principles.
-            <Author>Abigail Donutdough</Author>
-          </AnimatedParagraph>
+          <AnimatedBlock from={'left'} extraDelay={0.5}>
+            <p>
+              Architectural design is primarily driven by the holistically creative manipulation of
+              mass, space, volume, texture, light, shadow, materials, program, and Realistic
+              elements such as cost, construction and technology, in order to achieve an end which
+              is aesthetic, functional and often artistic. This distinguishes Architecture from
+              engineering design, which is usually driven primarily by the creative application of
+              mathematical and scientific principles.
+              <Author>Abigail Donutdough</Author>
+            </p>
+          </AnimatedBlock>
         </AboutDescription>
       </div>
       <StyledImage

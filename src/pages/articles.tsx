@@ -6,7 +6,7 @@ import slugify from 'slugify';
 import { Title } from '../components/Title/Title';
 import SEO from '../components/SEO/SEO';
 import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
-import { AnimatedParagraph } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
+import { AnimatedBlock } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
 import { ImagesLayoutWrapper } from '../components/ImagesWrapper/ImagesWrapper';
 import { StyledArticleLink } from '../components/GalleryStyles/gallery.styled';
 import { DisplayGallery } from '../components/DisplayGallery/DisplayGallery';
@@ -53,10 +53,12 @@ const IndexPage = ({ data }: IIndexProps) => {
       <SEO title={'Hatta articles'} article={false} />
       <Title>
         <AnimatedTitle headingElement={'h2'}>articles</AnimatedTitle>
-        <AnimatedParagraph>
-          While artists work from real to the abstract, architects must work from the abstract to
-          the real.
-        </AnimatedParagraph>
+        <AnimatedBlock>
+          <p>
+            While artists work from real to the abstract, architects must work from the abstract to
+            the real.
+          </p>
+        </AnimatedBlock>
       </Title>
       <DisplayGallery>
         {nodes.map((node, index) => (

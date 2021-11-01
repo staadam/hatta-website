@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { Title } from '../components/Title/Title';
 import { DisplayGallery } from '../components/DisplayGallery/DisplayGallery';
 import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
 import { AnimatedBlock } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
-import { ImagesLayoutWrapper } from '../components/ImagesWrapper/ImagesWrapper';
+import { ImagesLayoutWrapper, StyledGatsbyImage } from '../components/ImagesWrapper/ImagesWrapper';
 import SEO from '../components/SEO/SEO';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface IPhotosArrayItem {
   gatsbyImageData: IGatsbyImageData;
@@ -48,11 +48,11 @@ const Gallery = ({ data }: IIndexProps) => {
       </Title>
       <DisplayGallery>
         {data.datoCmsGallery.photos.map((image, index) => (
-          <GatsbyImage
+          <StyledGatsbyImage
             key={index}
             alt={image.alt || 'gallery element'}
             image={image.gatsbyImageData}
-            className='styledImage'
+            style={{ width: '100%', height: '100%' }}
           />
         ))}
       </DisplayGallery>

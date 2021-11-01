@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { useState } from 'react';
 
+const mediaChangeMenu = '980px';
+
 const Wrapper = styled.nav`
   position: absolute;
   width: 100%;
@@ -21,6 +23,10 @@ const StyledLogo = styled(Link)`
   margin: 0 25px;
   text-decoration: none;
   text-transform: uppercase;
+
+  @media (max-width: ${mediaChangeMenu}) {
+    margin: 0;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -33,7 +39,7 @@ const StyledLink = styled(Link)`
     font-weight: 700;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: ${mediaChangeMenu}) {
     padding: 15px 50px;
     transition: background-color 0.1s;
 
@@ -55,7 +61,7 @@ const HamburgerMenu = styled.button`
   cursor: pointer;
   transition: transform 0.3s;
 
-  @media (max-width: 720px) {
+  @media (max-width: ${mediaChangeMenu}) {
     display: block;
   }
 
@@ -85,11 +91,11 @@ const HamburgerMenu = styled.button`
 `;
 
 const Subpage = styled.div`
-  @media (max-width: 720px) {
+  @media (max-width: ${mediaChangeMenu}) {
     position: absolute;
     top: 0;
     left: 100%;
-    width: 300px;
+    width: 100%;
     height: 100vh;
     background-color: ${({ theme: { colors } }) => colors.white};
     color: ${({ theme: { colors } }) => colors.black};
@@ -97,7 +103,7 @@ const Subpage = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: ${({ isOpen }) => (isOpen ? 'translateX(-300px)' : 'translateX(0)')};
+    transform: ${({ isOpen }) => (isOpen ? 'translateX(-100%)' : 'translateX(0)')};
     transition: transform 0.3s;
   }
 `;
@@ -105,22 +111,24 @@ const Subpage = styled.div`
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggle = () => setIsOpen((prevState) => !prevState);
+  const handleToggle = (): void => setIsOpen((prevState) => !prevState);
+
+  const handleCloseMenu = (): void => setIsOpen(false);
 
   return (
     <Wrapper>
       <StyledLogo to='/'>Hatta</StyledLogo>
       <Subpage isOpen={isOpen}>
-        <StyledLink to='/about' activeClassName='active'>
+        <StyledLink to='/about' activeClassName='active' onClick={handleCloseMenu}>
           about
         </StyledLink>
-        <StyledLink to='/articles' activeClassName='active'>
+        <StyledLink to='/articles' activeClassName='active' onClick={handleCloseMenu}>
           articles
         </StyledLink>
-        <StyledLink to='/gallery' activeClassName='active'>
+        <StyledLink to='/gallery' activeClassName='active' onClick={handleCloseMenu}>
           gallery
         </StyledLink>
-        <StyledLink to='/contact' activeClassName='active'>
+        <StyledLink to='/contact' activeClassName='active' onClick={handleCloseMenu}>
           contact
         </StyledLink>
       </Subpage>

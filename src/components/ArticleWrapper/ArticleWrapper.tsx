@@ -12,4 +12,10 @@ export const ArticleWrapper = styled.article`
     margin-top: 50px;
     max-width: 500px;
   }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
 `;

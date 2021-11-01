@@ -34,6 +34,11 @@ export const Wrapper = styled.main`
 
   display: grid;
   grid-template-columns: 1.7fr minmax(300px, 1fr);
+
+  @media (max-width: 670px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 100vh);
+  }
 `;
 
 export const Banner = styled.div`
@@ -41,9 +46,17 @@ export const Banner = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  padding-right: 30px;
+  padding: 120px 30px;
   animation: ${fadeInBanner} 0.5s 0.6s both ease;
   z-index: 0;
+
+  @media (max-width: 1024px) {
+    padding: 40px 30px 0 30px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 40px 30px 0 30px;
+  }
 `;
 
 export const StyledImage = styled(GatsbyImage)`

@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import axios from 'axios';
+import styled from 'styled-components';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+import { Title } from '../components/Title/Title';
+import SEO from '../components/SEO/SEO';
 import { AnimatedTitle } from '../components/Animation/AnimatedTitle/AnimatedTitle';
 import { AnimatedBlock } from '../components/Animation/AnimatedParagraph/AnimatedParagraph';
-import { Title } from '../components/Title/Title';
 import { ImagesLayoutWrapper } from '../components/ImagesWrapper/ImagesWrapper';
-import SEO from '../components/SEO/SEO';
-import axios from 'axios';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { FormField } from '../components/FormField/FormField';
-import styled from 'styled-components';
 import { StyledButton } from '../components/StyledButton/StyledButton';
 
 const FormWrapper = styled.form`
@@ -48,6 +49,7 @@ const Contact = () => {
     reset,
     formState: { errors },
   } = useForm<Inputs>();
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const token = await reRef.current.executeAsync();
     reRef.current.reset();

@@ -4,8 +4,8 @@ import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { Title } from '../components/Title/Title';
 import { StyledButton } from '../components/StyledButton/StyledButton';
-import SEO from '../components/SEO/SEO';
 import { Wrapper, Banner, StyledImage } from '../components/IndexStyled/Index.styled';
+import SEO from '../components/SEO/SEO';
 
 interface IIndexProps {
   data: {
@@ -38,7 +38,8 @@ const IndexPage = ({ data }: IIndexProps) => {
         <Title isBanner>
           <h1>Your new space</h1>
           <p>
-            While artists work from real to the abstract, architects must work from the abstract to the real.
+            While artists work from real to the abstract, architects must work from the abstract to
+            the real.
           </p>
         </Title>
         <StyledButton>estimate project</StyledButton>

@@ -11,6 +11,7 @@ export const StyledButton = styled.button`
   border: 3px solid black;
   cursor: pointer;
   z-index: 5;
+  transition: background-color 0.03s;
   //overflow: hidden;
 
   &::before,

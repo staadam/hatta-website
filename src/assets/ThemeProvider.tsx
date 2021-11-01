@@ -13,6 +13,8 @@ export const theme = {
   },
   fontSize: {
     banner: '92px',
+    mediumBanner: '50px',
+    smallBanner: '40px',
     xxl: '34px',
     xl: '24px',
     l: '17px',

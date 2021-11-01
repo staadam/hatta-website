@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle } from '../assets/GlobalStyle';
 import { Navigation } from '../components/Navigation/Navigation';
@@ -10,12 +10,19 @@ interface ILayoutProps {
   children: ReactNode;
 }
 
+const GlobalWrapper = styled.div`
+  overflow-x: hidden;
+  position: relative;
+`;
+
 const Layout = ({ children }: ILayoutProps) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <Navigation />
-    {children}
-  </ThemeProvider>
+  <GlobalWrapper>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Navigation />
+      {children}
+    </ThemeProvider>
+  </GlobalWrapper>
 );
 
 export default Layout;

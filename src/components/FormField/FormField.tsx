@@ -42,12 +42,17 @@ const StyledInput = styled.input`
     outline: none;
     box-shadow: 0 0 12px 0 #c4c4c4;
   }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 const StyledLabel = styled.label`
   font-weight: 600;
   margin-bottom: 10px;
 `;
+
 // eslint-disable-next-line react/display-name
 export const FormField = React.forwardRef(
   ({ label, type = 'text', name, id, isTextarea = false, ...props }: IFormFieldProps, ref) => {

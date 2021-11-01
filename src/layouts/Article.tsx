@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Title } from '../components/Title/Title';
 import { ArticleWrapper } from '../components/ArticleWrapper/ArticleWrapper';
@@ -16,10 +17,6 @@ interface IDatoCMSParagraph {
 }
 
 interface IArticleProps {
-  pageContext: {
-    slug: string;
-    id: string;
-  };
   data: {
     datoCmsArticle: {
       title: string;
@@ -52,7 +49,7 @@ export const query = graphql`
   }
 `;
 
-const Article = ({ pageContext, data }: IArticleProps) => {
+const Article = ({ data }: IArticleProps) => {
   return (
     <ArticleWrapper>
       <Title>

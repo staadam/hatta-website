@@ -1,9 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { ReactNode } from 'react';
+import styled from 'styled-components';
 
 interface ITitleProps {
-  children: ReactNode;
+  children: React.ReactNode;
   isBanner?: boolean;
 }
 
@@ -18,6 +17,18 @@ const TitleWrapper = styled.div`
     font-size: ${({ theme: { fontSize } }) => fontSize.banner};
     margin-bottom: 50px;
     line-height: 0.9;
+
+    @media (max-width: 1024px) and (orientation: landscape) {
+      font-size: ${({ theme: { fontSize } }) => fontSize.mediumBanner};
+    }
+
+    @media (max-width: 600px) and (orientation: landscape) {
+      font-size: ${({ theme: { fontSize } }) => fontSize.smallBanner};
+    }
+
+    @media (max-width: 400px) {
+      font-size: ${({ theme: { fontSize } }) => fontSize.smallBanner};
+    }
   }
 
   h2 {

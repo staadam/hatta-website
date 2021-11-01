@@ -15,6 +15,15 @@ const validateHuman = async (token) => {
 
 exports.handler = async function (req, res) {
   const { name, email, message, token } = JSON.parse(req.body);
+  const human = validateHuman(token);
+  let alertMessage = 'Message send!';
+
+  if (!human) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "You're a bot!!!" }),
+    };
+  }
 
   const mailMessage = `
     From: ${name},
@@ -29,28 +38,16 @@ exports.handler = async function (req, res) {
     text: mailMessage,
   };
 
-  const human = validateHuman(token);
-
-  if (!human) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "You're a bot!!!" }),
-    };
-  }
-
   await (async () => {
     try {
       await sgMail.send(msg);
     } catch (error) {
-      console.error(error);
-      if (error.response) {
-        console.error(error.response.body);
-      }
+      alertMessage = 'Something went wrong. Try again later.';
     }
   })();
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'message send' }),
+    body: JSON.stringify({ message: alertMessage }),
   };
 };

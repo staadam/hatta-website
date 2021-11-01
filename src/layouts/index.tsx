@@ -2,9 +2,9 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { GlobalStyle } from '../assets/GlobalStyle';
-import { Navigation } from '../components/Navigation/Navigation';
 import { theme } from '../assets/ThemeProvider';
+import { AlertProvider } from '../hooks/useAlert';
+import App from './App';
 
 interface ILayoutProps {
   children: ReactNode;
@@ -15,14 +15,16 @@ const GlobalWrapper = styled.div`
   position: relative;
 `;
 
-const Layout = ({ children }: ILayoutProps) => (
-  <GlobalWrapper>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Navigation />
-      {children}
-    </ThemeProvider>
-  </GlobalWrapper>
-);
+const Layout = ({ children }: ILayoutProps) => {
+  return (
+    <GlobalWrapper>
+      <AlertProvider>
+        <ThemeProvider theme={theme}>
+          <App>{children}</App>
+        </ThemeProvider>
+      </AlertProvider>
+    </GlobalWrapper>
+  );
+};
 
 export default Layout;
